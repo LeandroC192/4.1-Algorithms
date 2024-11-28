@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,14 +12,18 @@ public class Algorithms {
         int evens = evens();
         int twoDigits = twoDigits();
         int greater500 = greater500();
-       // int greatest = greatest();
+        int greatest = greatest();
         int sum = sum();
+        int mean = meanAverage();
+        int mode = mode();
         System.out.println(odds);
         System.out.println(evens);
         System.out.println(twoDigits);
         System.out.println(greater500);
-        //System.out.println(greatest);
+        System.out.println(greatest);
         System.out.println(sum);
+        System.out.println(mean);
+        System.out.println(mode);
         s.close();
     }
 
@@ -50,21 +55,72 @@ public class Algorithms {
         }
         return twoDigits;
     }
-    public static int greater500() throws FileNotFoundException{
+    public static int greater500() throws FileNotFoundException
+    {
         s = new Scanner(f);
         int greater500 = 0;
-        while (s.hasNext()) {
+        while (s.hasNext()) 
+        {
             if (s.nextInt() > 500)
+            {
                 greater500++;
+            }
         }
         return greater500;
     }
-    public static int sum() throws FileNotFoundException{
+    public static int sum() throws FileNotFoundException
+    {
         s = new Scanner(f);
         int sum = 0;
-        while (s.hasNext()) {
+        while (s.hasNext()) 
+        {
               sum += s.nextInt();
         }
         return sum;
     }
+    public static int greatest() throws FileNotFoundException
+    {
+        s = new Scanner(f);
+        int greatest = 0;
+        while (s.hasNext()) 
+        {
+            if(s.nextInt()>greatest)
+            {
+                greatest = s.nextInt();
+            }
+        }
+        return greatest;
+    }
+    public static int meanAverage() throws FileNotFoundException
+    {
+        s = new Scanner(f);
+        int sum = 0;
+        int amount = 0;
+        while (s.hasNext()) 
+        {
+              sum += s.nextInt();
+              amount ++;
+        }
+        return (sum/amount);
+    }
+    public static int mode() throws FileNotFoundException
+    {
+        s = new Scanner(f);
+        int mode = 0;
+        ArrayList<Integer> tracker = new ArrayList<>();
+        int[] values;
+        values = new int[1000];
+        while (s.hasNext())
+        {
+            for(int i= 0; i < 999; i++)
+            {
+                if(i == s.nextInt())
+                {
+                        values[i]++;
+                }
+            
+            } 
+        }
+        return mode;
+    }      
 }
