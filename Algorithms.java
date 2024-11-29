@@ -15,7 +15,7 @@ public class Algorithms {
         int greatest = greatest();
         int sum = sum();
         int mean = meanAverage();
-        //int mode = mode();
+        int mode = mode();
         System.out.println(odds);
         System.out.println(evens);
         System.out.println(twoDigits);
@@ -23,7 +23,7 @@ public class Algorithms {
         System.out.println(greatest);
         System.out.println(sum);
         System.out.println(mean);
-        //System.out.println(mode);
+        System.out.println(mode);
         s.close();
     }
 
@@ -109,23 +109,17 @@ public class Algorithms {
         int mode = 0;
         int[]values;
         values = new int[1000];
-       // ArrayList value = new ArrayList(1000);
         while (s.hasNext())
         {
-            for(int i =0; i <999; i++)
-            {
                 values[s.nextInt()]++;
-            }
         }
-        while (s.hasNext()) 
+        for(int i =0; i <999; i++)
         {
-            int x = 0;
-            if(values[x]>mode)
+            if(values[i]>mode)
             {
-                mode = values[x];
+                mode = values[i];
             }
-        }
-
+        } 
         return mode;
-    }      
+    }   
 }
