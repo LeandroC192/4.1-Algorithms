@@ -1,5 +1,5 @@
-import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.ArrayList; 
 import java.io.File;
 import java.io.FileNotFoundException;
 
@@ -15,7 +15,7 @@ public class Algorithms {
         int greatest = greatest();
         int sum = sum();
         int mean = meanAverage();
-        int mode = mode();
+        //int mode = mode();
         System.out.println(odds);
         System.out.println(evens);
         System.out.println(twoDigits);
@@ -23,7 +23,7 @@ public class Algorithms {
         System.out.println(greatest);
         System.out.println(sum);
         System.out.println(mean);
-        System.out.println(mode);
+        //System.out.println(mode);
         s.close();
     }
 
@@ -107,20 +107,25 @@ public class Algorithms {
     {
         s = new Scanner(f);
         int mode = 0;
-        ArrayList<Integer> tracker = new ArrayList<>();
-        int[] values;
+        int[]values;
         values = new int[1000];
+       // ArrayList value = new ArrayList(1000);
         while (s.hasNext())
         {
-            for(int i= 0; i < 999; i++)
+            for(int i =0; i <999; i++)
             {
-                if(i == s.nextInt())
-                {
-                        values[i]++;
-                }
-            
-            } 
+                values[s.nextInt()]++;
+            }
         }
+        while (s.hasNext()) 
+        {
+            int x = 0;
+            if(values[x]>mode)
+            {
+                mode = values[x];
+            }
+        }
+
         return mode;
     }      
 }
