@@ -1,5 +1,5 @@
 import java.util.Scanner;
-import java.util.ArrayList; 
+import java.util.ArrayList;
 import java.io.File;
 import java.io.FileNotFoundException;
 
@@ -106,20 +106,30 @@ public class Algorithms {
     public static int mode() throws FileNotFoundException
     {
         s = new Scanner(f);
-        int mode = 0;
-        int[]values;
-        values = new int[1000];
+        ArrayList<Integer> values = new ArrayList<>();
         while (s.hasNext())
         {
-                values[s.nextInt()]++;
+            values.add(s.nextInt());
         }
-        for(int i =0; i <999; i++)
+        int length = values.size();
+        int maxFrequency = 0;
+        int maxNumber = 0;
+        for (int i = 0; i < length; i++)
         {
-            if(values[i]>mode)
+            int count = 0;
+            for (int j = 0; j < length; j++)
             {
-                mode = values[i];
-            }
-        } 
-        return mode;
-    }   
+                if (values.get(i).equals(values.get(j)))
+                {
+                    count++;
+                }
+                if (count > maxFrequency)
+                {
+                    maxFrequency = count;
+                    maxNumber = values.get(i);
+                }
+            } 
+        }
+        return maxNumber; 
+    } 
 }
